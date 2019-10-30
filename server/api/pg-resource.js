@@ -62,38 +62,18 @@ module.exports = postgres => {
 
       const findUserQuery = {
         text: "SELECT * FROM users WHERE id = $1", // @TODO: Basic queries
-        values: [id]
+        values: id ? [id] : []
       };
-
-      /**
-       *  Refactor the following code using the error handling logic described above.
-       *  When you're done here, ensure all of the resource methods in this file
-       *  include a try catch, and throw appropriate errors.
-       *
-       *  Ex: If the user is not found from the DB throw 'User is not found'
-       *  If the password is incorrect throw 'User or Password incorrect'
-       */
-
-      const user = await postgres.query(findUserQuery);
-
-      return user.rows[0];
-      // -------------------------------
+      try {
+        const user = await postgres.query(findUserQuery);
+        return user.rows[0];
+      } catch (e) {
+        throw "User is not found";
+      }
     },
     async getItems(idToOmit) {
       const items = await postgres.query({
-        /**
-         *  @TODO:
-         *
-         *  idToOmit = ownerId
-         *
-         *  Get all Items. If the idToOmit parameter has a value,
-         *  the query should only return Items were the ownerid !== idToOmit
-         *
-         *  Hint: You'll need to use a conditional AND/WHERE clause
-         *  to your query text using string interpolation
-         */
-
-        text: ``,
+        text: `SELECT * FROM items ${idToOmit ? `WHERE ownerId != $1` : ``}`,
         values: idToOmit ? [idToOmit] : []
       });
       return items.rows;
@@ -104,29 +84,25 @@ module.exports = postgres => {
          *  @TODO:
          *  Get all Items for user using their id
          */
-        text: ``,
+        text: `SELECT * FROM items WHERE ownerId = $1`,
         values: [id]
       });
       return items.rows;
     },
     async getBorrowedItemsForUser(id) {
       const items = await postgres.query({
-        /**
-         *  @TODO:
-         *  Get all Items borrowed by user using their id
-         */
-        text: ``,
+        text: `SELECT * FROM items WHERE borrowerId = $1`,
         values: [id]
       });
       return items.rows;
     },
     async getTags() {
-      const tags = await postgres.query(/* @TODO: Basic queries */);
+      const tags = await postgres.query(`SELECT * FROM tags`);
       return tags.rows;
     },
     async getTagsForItem(id) {
       const tagsQuery = {
-        text: ``, // @TODO: Advanced query Hint: use INNER JOIN
+        text: `SELECT * FROM tags INNER JOIN itemtags ON tags.id = itemtags.tagId WHERE itemtags.itemId = $1`, // @TODO: Advanced query Hint: use INNER JOIN
         values: [id]
       };
 
@@ -164,6 +140,12 @@ module.exports = postgres => {
             client.query("BEGIN", async err => {
               const { title, description, tags } = item;
 
+              client.query(`SELECT * FROM items`);
+              const itemQuery = {
+                text:
+                  "INSERT INTO items (title, description, ownerId) VALUES ($1, $2, $3) RETURNING *",
+                values: [title, description, user.id]
+              };
               // Generate new Item query
               // @TODO
               // -------------------------------

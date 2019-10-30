@@ -14,7 +14,7 @@ function setCookie({ tokenName, token, res }) {
    *  A secure cookie that can be used to store a user's session data has the following properties:
    *  1) It can't be accessed from JavaScript
    *  2) It will only be sent via https (but we'll have to disable this in development using NODE_ENV)
-   *  3) A boomtown cookie should oly be valid for 2 hours.
+   *  3) A boomtown cookie should only be valid for 2 hours.
    */
   // Refactor this method with the correct configuration values.
   res.cookie(tokenName, token, {

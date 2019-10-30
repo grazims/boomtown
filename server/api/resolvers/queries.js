@@ -2,6 +2,7 @@ const { ApolloError } = require("apollo-server");
 
 const queryResolvers = app => ({
   viewer(parent, args, { user }, info) {
+    console.log(parent, "parent", "args", "user");
     /**
      * @TODO: Authentication - Server
      *
@@ -20,20 +21,35 @@ const queryResolvers = app => ({
   async user(parent, { id }, { pgResource }, info) {
     try {
       const user = await pgResource.getUserById(id);
-      return user;
+      if (id === null) {
+        return null;
+      } else {
+        return user;
+      }
     } catch (e) {
       throw new ApolloError(e);
     }
   },
-  async items() {
-    // @TODO: Replace this mock return statement with the correct items from Postgres
-    return [];
-    // -------------------------------
-  },
-  async tags() {
-    // @TODO: Replace this mock return statement with the correct tags from Postgres
-    return [];
+  async items(parent, { filter }, { pgResource }, info) {
+    try {
+      const items = await pgResource.getItems(filter);
+
+      return items;
+    } catch (e) {
+      throw new ApolloError(e);
+    }
     // -------------------------------
   }
+  // ,
+  // async tags(parent, { tag }, { pgResource }) {
+  //   console.log(tag);
+  //   try {
+  //     const tags = await pgResource.getTags(tag);
+  //     return tags;
+  //   } catch (e) {
+  //     throw new ApolloError(e);
+  //   }
+  //   // -------------------------------
+  // }
 });
 module.exports = queryResolvers;
