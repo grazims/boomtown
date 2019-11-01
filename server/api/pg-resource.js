@@ -142,10 +142,10 @@ module.exports = postgres => {
 
               client.query(`SELECT * FROM items`);
               const itemQuery = {
-                text:
-                  "INSERT INTO items (title, description, ownerId) VALUES ($1, $2, $3) RETURNING *",
+                text: `INSERT INTO items (title, description, ownerId) VALUES ($1, $2, $3) RETURNING *`,
                 values: [title, description, user.id]
               };
+
               // Generate new Item query
               // @TODO
               // -------------------------------
