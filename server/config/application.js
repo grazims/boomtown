@@ -24,7 +24,7 @@ module.exports = app => {
 
   if (process.env.NODE_ENV === "development") {
     const corsConfig = {
-      origin: "http://localhost:3000",
+      origin: "http://localhost:3002",
       credentials: true
     };
     app.set("CORS_CONFIG", corsConfig);

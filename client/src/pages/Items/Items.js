@@ -1,12 +1,12 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import styles from './styles';
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import styles from "./styles";
 
 const Items = ({ classes }) => {
   return (
     <div>
       <p>
-        This is the items page located at <code>/items</code>.
+        This is the items32 page located at <code>/items</code>.
       </p>
     </div>
   );

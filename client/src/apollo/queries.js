@@ -88,8 +88,8 @@ export const ADD_ITEM_MUTATION = gql`
 `;
 
 export const VIEWER_QUERY = gql`
-  query {
-    user {
+  query viewer {
+    viewer {
       id
       email
       fullname
@@ -121,7 +121,7 @@ export const SIGNUP_MUTATION = gql`
 
 export const LOGIN_MUTATION = gql`
   mutation login($user: LoginInput!) {
-    signup(user: $user) {
+    login(user: $user) {
       token
       user {
         id

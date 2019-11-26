@@ -25,12 +25,8 @@ const client = new ApolloClient({
         );
       }
       if (networkError) console.log(`[Network error]: ${networkError}`);
-    })
-    /**
-     * @TODO: Set your httpLink link as the next item in this array.
-     * Read about httpLink here:
-     * Don't forget to add to add a comma after the first array item above!
-     */
+    }),
+    httpLink
   ]),
   cache: new InMemoryCache() // Pull data from client-side cache, if available
 });

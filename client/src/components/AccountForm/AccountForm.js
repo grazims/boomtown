@@ -26,23 +26,21 @@ class AccountForm extends Component {
 
   render() {
     const { classes, signup, login } = this.props;
-    // const validateValues = values => {
-    //   console.log(values);
-    // }
+    const validateValues = values => {
+      console.log(values);
+    };
 
     return (
       <Form
         onSubmit={values => {
-          console.log(values);
-          const loginnput = {
+          // console.log(values);
+          const loginInput = {
             variables: {
               user: values
             }
           };
 
-          this.state.formToggle
-            ? console.log("Login to existing account.")
-            : console.log("Create an account.");
+          this.state.formToggle ? login(loginInput) : signup(loginInput);
         }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit} className={classes.accountForm}>
@@ -154,17 +152,17 @@ export default compose(
     options: {
       query: {
         VIEWER_QUERY
-      },
-      name: "signup"
-    }
+      }
+    },
+    name: "signup"
   }),
   graphql(LOGIN_MUTATION, {
     options: {
       query: {
         VIEWER_QUERY
-      },
-      name: "login"
-    }
+      }
+    },
+    name: "login"
   }),
   withStyles(styles)
 )(AccountForm);

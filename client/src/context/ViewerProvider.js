@@ -11,10 +11,9 @@ const ViewerProvider = ({ children }) => {
       {({ data, loading }) => {
         if (!data) return children;
 
-        //some data validation or null check
-        //or something to that effect
+        const viewer = data && data.viewer ? data.viewer : null;
         return (
-          <ViewerContext.Provider value={(data.viewer, loading)}>
+          <ViewerContext.Provider value={{ viewer, loading }}>
             {children}
           </ViewerContext.Provider>
         );
