@@ -6,7 +6,9 @@ const Items = ({ classes }) => {
   return (
     <div>
       <p>
-        This is the items32 page located at <code>/items</code>.
+        This is the items page located at <code>/items</code>.
+        <h1>djisjdisjds</h1>
+        <h2>dhshdih</h2>
       </p>
     </div>
   );

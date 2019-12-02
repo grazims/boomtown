@@ -33,7 +33,7 @@ const NavBar = ({ classes }) => {
       <AppBar position="fixed">
         <Toolbar className={classes.nav}>
           <Link to={"/items"}>
-            <img className={classes.logo} src={logo} />
+            <img className={classes.logo} src={logo} alt="boomtown_logo" />
           </Link>
           <div className={classes.share}>
             <Link to={"/share"}>
