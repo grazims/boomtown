@@ -10,6 +10,7 @@ import { Form, Field } from "react-final-form";
 import { graphql, compose } from "react-apollo";
 import validate from "./helpers/validation";
 import styles from "./styles";
+
 import {
   LOGIN_MUTATION,
   SIGNUP_MUTATION,
@@ -146,21 +147,17 @@ class AccountForm extends Component {
     );
   }
 }
-
+const refetchQueries = [{ query: VIEWER_QUERY }];
 export default compose(
   graphql(SIGNUP_MUTATION, {
     options: {
-      query: {
-        VIEWER_QUERY
-      }
+      refetchQueries
     },
     name: "signup"
   }),
   graphql(LOGIN_MUTATION, {
     options: {
-      query: {
-        VIEWER_QUERY
-      }
+      refetchQueries
     },
     name: "login"
   }),

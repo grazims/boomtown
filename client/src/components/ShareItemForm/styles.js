@@ -1,6 +1,6 @@
-import { makeStyles } from "@material-ui/core/styles";
+//import { makeStyles } from "@material-ui/core/styles";
 
-const styles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
     "& > *": {
       margin: theme.spacing(10),
@@ -13,9 +13,15 @@ const styles = makeStyles(theme => ({
   input: {
     display: "none"
   },
-  container: {
+  grandecontainer: {
     display: "flex",
-    flexWrap: "column"
+    flexDirection: "column"
+  },
+
+  container1: {
+    display: "flex",
+    // flexDirection: "row-reverse",
+    margin: 5
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -28,6 +34,6 @@ const styles = makeStyles(theme => ({
   menu: {
     width: 200
   }
-}));
+});
 
 export default styles;

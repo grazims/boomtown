@@ -1,15 +1,12 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import ItemGrid from "../../components/ItemGrid";
 
-const Items = ({ classes }) => {
+const Items = ({ classes, items }) => {
   return (
     <div>
-      <p>
-        This is the items page located at <code>/items</code>.
-        <h1>djisjdisjds</h1>
-        <h2>dhshdih</h2>
-      </p>
+      <ItemGrid items={items} />
     </div>
   );
 };

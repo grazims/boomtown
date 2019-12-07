@@ -4,7 +4,7 @@ const ItemFields = gql`
   fragment ItemFields on Item {
     id
     title
-    imageUrl
+    imageurl
     description
     created
     tags {
@@ -17,20 +17,12 @@ const ItemFields = gql`
       email
       bio
     }
-    borrower {
-      id
-      fullname
-      email
-      bio
-    }
   }
 `;
 
-// See the Apollo docs for instructions on how to use fragments:
-// https://www.apollographql.com/docs/angular/features/fragments.html
 export const ITEM_QUERY = gql`
   query item($id: ID!) {
-    item(id: $id) {
+    items(id: $id) {
       ...ItemFields
     }
   }
@@ -39,7 +31,7 @@ export const ITEM_QUERY = gql`
 
 export const ALL_ITEMS_QUERY = gql`
   query items($filter: ID) {
-    item(filter: $filter) {
+    items(filter: $filter) {
       ...ItemFields
     }
   }
@@ -98,13 +90,8 @@ export const VIEWER_QUERY = gql`
   }
 `;
 export const LOGOUT_MUTATION = gql`
-  mutation logout($user: Logout!) {
-    logout(user: $user) {
-      token
-      user {
-        id
-      }
-    }
+  mutation {
+    logout
   }
 `;
 

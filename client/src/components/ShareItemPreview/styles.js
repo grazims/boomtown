@@ -1,3 +1,3 @@
-const style = theme => ({});
+const styles = theme => ({});
 
 export default styles;

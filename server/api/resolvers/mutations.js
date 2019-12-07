@@ -84,8 +84,13 @@ const mutationResolvers = app => ({
   },
 
   logout(parent, args, context) {
-    context.req.res.clearCookie(app.get("JWT_COOKIE_NAME"));
-    return true;
+    try {
+      console.log("logout");
+      context.req.res.clearCookie(app.get("JWT_COOKIE_NAME"));
+      return true;
+    } catch (e) {
+      console.log(e);
+    }
   },
   async addItem(parent, { item }, { pgResource, token }, info) {
     const user = await jwt.decode(token, app.get("JWT_SECRET"));

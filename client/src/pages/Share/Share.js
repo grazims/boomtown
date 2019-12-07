@@ -1,6 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import ItemCard from "../../components/ItemCard";
+import ShareItemForm from "../../components/ShareItemForm";
 /* 
   TODO: Create ShareItemForm and ShareItemPreview in the components dir
   and call them from this file.
@@ -12,11 +14,11 @@ import styles from "./styles";
   Hint: It should look like any other Item card.
 
 */
-import ShareItemForm from "../../components/ShareItemForm";
+import BasicTextFields from "../../components/ShareItemForm";
 // import ShareItemPreview from '../../components/ShareItemPreview';
 
 const Share = ({ classes }) => {
-  return <ShareItemForm />;
+  return <ItemCard />;
 };
 
 export default withStyles(styles)(Share);
