@@ -15,10 +15,26 @@ import ShareItemForm from "../../components/ShareItemForm";
 
 */
 import BasicTextFields from "../../components/ShareItemForm";
-// import ShareItemPreview from '../../components/ShareItemPreview';
+import ShareItemPreview from "../../components/ShareItemPreview";
 
 const Share = ({ classes }) => {
-  return <ItemCard />;
+  return (
+    <div>
+      <ShareItemForm />
+      <ItemCard />
+    </div>
+  );
 };
 
 export default withStyles(styles)(Share);
+
+// const Share = ({ classes, tags }) => {
+//   return (
+//     <div className={classes.sharePage}>
+//       <ShareItemPreview />
+//       <ShareItemForm tags={tags} />
+//     </div>
+//   );
+// };
+
+// export default withStyles(styles)(Share);

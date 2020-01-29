@@ -8,11 +8,9 @@ class ShareItemPreview extends Component {
   render() {
     return (
       <ItemPreviewContext.Consumer>
-        {({ state }) => (
-          <div>
-            <ItemCard item={state.item} />
-          </div>
-        )}
+        <div>
+          <ItemCard />
+        </div>
       </ItemPreviewContext.Consumer>
     );
   }

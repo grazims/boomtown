@@ -8,8 +8,6 @@ const ViewerProvider = ({ children }) => {
   return (
     <Query query={VIEWER_QUERY}>
       {({ data, loading }) => {
-        if (!data) return children;
-
         const viewer = data && data.viewer ? data.viewer : null;
         return (
           <ViewerContext.Provider value={{ viewer, loading }}>

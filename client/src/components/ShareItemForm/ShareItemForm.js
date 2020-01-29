@@ -25,3 +25,19 @@ class ShareItemForm extends Component {
 }
 
 export default withStyles(styles)(ShareItemForm);
+
+// const refetchQueries = [
+//   {
+//     query: ALL_ITEMS_QUERY
+//   }
+// ];
+
+// export default compose(
+//   graphql(ADD_ITEM_MUTATION, {
+//     options: {
+//       refetchQueries
+//     },
+//     name: "addItemMutation"
+//   }),
+//   withStyles(styles)
+// );
