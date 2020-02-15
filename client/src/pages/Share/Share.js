@@ -19,22 +19,17 @@ import ShareItemPreview from "../../components/ShareItemPreview";
 
 const Share = ({ classes }) => {
   return (
-    <div>
-      <ShareItemForm />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: 50
+      }}
+    >
       <ItemCard />
+      <ShareItemForm />
     </div>
   );
 };
 
 export default withStyles(styles)(Share);
-
-// const Share = ({ classes, tags }) => {
-//   return (
-//     <div className={classes.sharePage}>
-//       <ShareItemPreview />
-//       <ShareItemForm tags={tags} />
-//     </div>
-//   );
-// };
-
-// export default withStyles(styles)(Share);

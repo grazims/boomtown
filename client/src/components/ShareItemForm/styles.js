@@ -14,12 +14,16 @@ const styles = theme => ({
     display: "none"
   },
   grandecontainer: {
-    display: "flex",
-    flexDirection: "column"
+    //display: "flex",
+    // flexDirection: "column",
+    marginLeft: 90,
+    maxWidth: 345,
+    margin: 20,
+    width: 330
   },
 
   container1: {
-    display: "flex",
+    //display: "flex",
     // flexDirection: "row-reverse",
     margin: 5
   },

@@ -12,10 +12,16 @@ class ShareItemForm extends Component {
     return (
       <div className={classes.grandecontainer}>
         <div className={classes.container1}>
-          <form>
+          <form className={classes.container1}>
             <h1>Share. Borrow. Prosper.</h1>
             <Button variant="contained" color="primary">
               Select an Image
+            </Button>
+            <p>name your item</p>
+            <p>desc your item</p>
+            <p>add some tags</p>
+            <Button variant="contained" color="primary">
+              Share
             </Button>
           </form>
         </div>
@@ -41,3 +47,7 @@ export default withStyles(styles)(ShareItemForm);
 //   }),
 //   withStyles(styles)
 // );
+
+//ERRADO
+
+//SHARE ITEM FORM eh do lado direito

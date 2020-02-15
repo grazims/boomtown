@@ -23,7 +23,7 @@ class ItemCard extends Component {
               className={classes.media}
               image="https://wallup.net/wp-content/uploads/2015/12/119794-landscape-stars-748x421.jpg"
             />
-            <CardContent></CardContent>
+            {/* <CardContent></CardContent> */}
           </CardActionArea>
           <div className={classes.root}>
             <Avatar
@@ -31,6 +31,10 @@ class ItemCard extends Component {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA1_cB_z2jVf-eK2Yo6ePIJMwt5DWNnazeauE9BKh9C4P8cVMs&s"
               className={classes.bigAvatar}
             />
+            <div className={classes.containerText}>
+              <p className={classes.avatarName}>nome do avatar</p>
+              <p className={classes.avatarDate}>date</p>
+            </div>
           </div>
           <div className={classes.texto}>
             <h2>nome da foto</h2>
@@ -49,3 +53,6 @@ class ItemCard extends Component {
 }
 
 export default withStyles(styles)(ItemCard);
+
+//mudar => itemCard = lado esquerdo, para ser usado em diversas paginas
+// imagem, profile name, data, name your item, desc your item, botao 'borrow'
