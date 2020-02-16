@@ -6,7 +6,7 @@ import { Avatar } from "@material-ui/core";
 // import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
-import ProfileCard from "../../components/ProfileContents/ProfileCard";
+//import ProfileCard from "../../components/ProfileContents/ProfileCard";
 import Card from "../../components/ItemCard/ItemCard";
 
 const Profile = ({ classes, item, viewer }) => {
