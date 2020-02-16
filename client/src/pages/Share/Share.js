@@ -26,7 +26,7 @@ const Share = ({ classes }) => {
         paddingTop: 50
       }}
     >
-      <ItemCard />
+      <ShareItemPreview />
       <ShareItemForm />
     </div>
   );

@@ -11,6 +11,7 @@ import theme from "./theme";
 import client from "./apollo";
 //import store from "./redux";
 import { ViewerProvider } from "./context/ViewerProvider";
+import { ItemPreviewProvider } from "./context/ItemPreviewProvider";
 
 /**
  * @TODO: Initialize Redux Store
@@ -32,11 +33,11 @@ const App = () => {
       <CssBaseline />
       <ApolloProvider client={client}>
         <ViewerProvider>
-          {/* <ItemPreviewProvider> */}
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-          {/* </ItemPreviewProvider> */}
+          <ItemPreviewProvider>
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
+          </ItemPreviewProvider>
         </ViewerProvider>
       </ApolloProvider>
     </MuiThemeProvider>

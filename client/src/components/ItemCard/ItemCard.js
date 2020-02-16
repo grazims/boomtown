@@ -12,6 +12,7 @@ import { withStyles } from "@material-ui/core/styles";
 import React, { Component } from "react";
 
 const ItemCard = ({ classes, item }) => {
+  console.log("item", item);
   return (
     <Card className={classes.card}>
       <div className={classes.grandecontainer}>
@@ -29,14 +30,26 @@ const ItemCard = ({ classes, item }) => {
             className={classes.bigAvatar}
           />
           <div className={classes.containerText}>
-            <p className={classes.avatarName}>nome do avatar</p>
+            <p className={classes.avatarName}>
+              {item && item.itemowner ? item.itemowner.fullname : "No Owner"}
+            </p>
             <p className={classes.avatarDate}>date</p>
           </div>
         </div>
         <div className={classes.texto}>
-          <h2>nome da foto</h2>
-          <p>TAG</p>
-          <h3>descrição</h3>
+          <h2>{item && item.title ? item.title : "No title"}</h2>
+          <p>
+            {item && item.tags
+              ? item.tags
+                  .map(tag => {
+                    return tag.title;
+                  })
+                  .join(", ")
+              : "No tags"}
+          </p>
+          <h3>
+            {item && item.description ? item.description : "No description"}
+          </h3>
         </div>
         <CardActions>
           <Button size="small" color="primary">

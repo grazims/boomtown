@@ -20,7 +20,7 @@ class ItemGrid extends Component {
                 style={{ transitionDelay: `${i * 0.03}s` }}
               >
                 <Grid item xs={12} md={6} lg={4}>
-                  <ItemCard />
+                  <ItemCard item={item} />
                 </Grid>
               </Grow>
             );

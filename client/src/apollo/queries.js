@@ -47,9 +47,6 @@ export const ALL_USER_ITEMS_QUERY = gql`
       items {
         ...ItemFields
       }
-      borrowed {
-        ...ItemFields
-      }
     }
   }
   ${ItemFields}

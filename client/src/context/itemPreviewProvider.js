@@ -1,6 +1,6 @@
 import React, { Component, createContext, Children } from "react";
 
-export const ItemPreviewContext = createContext();
+const ItemPreviewContext = React.createContext();
 
 const initialState = {
   itemName: "Name your Item",
@@ -47,4 +47,5 @@ class ItemPreviewProvider extends Component {
   }
 }
 
-export default ItemPreviewProvider;
+export { ItemPreviewProvider };
+export default ItemPreviewContext;

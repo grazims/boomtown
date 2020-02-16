@@ -7,7 +7,7 @@ const relationResolvers = {
       return userItems;
     },
     async borrowed({ id }, args, { pgResource }, info) {
-      const getBorrowed = await pgResource.getBorrowed(id);
+      const getBorrowed = await pgResource.getBorrowedItemsForUser(id);
       return getBorrowed;
     }
   },

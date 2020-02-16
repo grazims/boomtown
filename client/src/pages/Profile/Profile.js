@@ -24,55 +24,57 @@ const Profile = ({ classes, item, viewer }) => {
             fetchPolicy="network-only"
           >
             {({ loading, data }) => {
-              if (loading || !data)
-                return (
-                  <>
+              console.log(data);
+              if (loading || !data) return null;
+              const { user } = data;
+              return (
+                <>
+                  <div
+                    style={{
+                      backgroundColor: "pink",
+                      display: "flex",
+                      justifyContent: "center"
+                    }}
+                  >
+                    {/* <div className={classes.container}> */}
                     <div
                       style={{
-                        backgroundColor: "pink",
-                        display: "flex",
-                        justifyContent: "center"
+                        display: "grid",
+                        //flexDirection: "row",
+                        justifyContent: "center",
+                        width: 400,
+                        backgroundColor: "red"
                       }}
                     >
-                      {/* <div className={classes.container}> */}
                       <div
                         style={{
-                          display: "grid",
-                          //flexDirection: "row",
-                          justifyContent: "center",
-                          width: 400,
-                          backgroundColor: "red"
+                          display: "flex",
+                          flexDirection: "row"
+                          //justifyContent: "center"
                         }}
                       >
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row"
-                            //justifyContent: "center"
-                          }}
-                        >
-                          <Avatar
-                            alt="Remy Sharp"
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA1_cB_z2jVf-eK2Yo6ePIJMwt5DWNnazeauE9BKh9C4P8cVMs&s"
-                          />
-                          <h3>{viewer.fullname}</h3>
-                        </div>
-                        <p>1 Item shared 0 Items borrowed</p>
-                        <p>"No bio provided."</p>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA1_cB_z2jVf-eK2Yo6ePIJMwt5DWNnazeauE9BKh9C4P8cVMs&s"
+                        />
+                        <h3>{user.fullname}</h3>
                       </div>
+                      <p>1 Item shared 0 Items borrowed</p>
+                      <p>{user.bio || "No Bio Provided"}</p>
                     </div>
-                    <div
-                      style={{
-                        backgroundColor: "purple",
-                        display: "flex",
-                        flexDirection: "column"
-                      }}
-                    >
-                      <h2>Shared Items</h2>
-                      <Card />
-                    </div>
-                  </>
-                );
+                  </div>
+                  <div
+                    style={{
+                      backgroundColor: "purple",
+                      display: "flex",
+                      flexDirection: "column"
+                    }}
+                  >
+                    <h2>Shared Items</h2>
+                    <Card />
+                  </div>
+                </>
+              );
             }}
           </Query>
         );
