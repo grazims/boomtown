@@ -82,7 +82,7 @@ class ShareItemForm extends Component {
 
                               <FormControl className={classes.formControl}>
                                 <Field name="itemImg">
-                                  {({ input, meta }) => (
+                                  {({ input }) => (
                                     <div>
                                       <TextField
                                         className={classes.imageInput}
@@ -243,6 +243,3 @@ class ShareItemForm extends Component {
 }
 
 export default withStyles(styles)(ShareItemForm);
-
-//criar um state pra por o alerta em bollean
-//ou redirecionar para a pagina inicial

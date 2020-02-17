@@ -10,7 +10,6 @@ import { Form, Field } from "react-final-form";
 import { graphql, compose } from "react-apollo";
 import validate from "./helpers/validation";
 import styles from "./styles";
-
 import {
   LOGIN_MUTATION,
   SIGNUP_MUTATION,
@@ -27,9 +26,9 @@ class AccountForm extends Component {
 
   render() {
     const { classes, signup, login } = this.props;
-    const validateValues = values => {
-      console.log(values);
-    };
+    // const validateValues = values => {
+    //   console.log(values);
+    // };
 
     return (
       <Form
@@ -43,7 +42,8 @@ class AccountForm extends Component {
 
           this.state.formToggle ? login(loginInput) : signup(loginInput);
         }}
-        render={({ handleSubmit }) => (
+        validate={validate}
+        render={({ handleSubmit, pristine, invalid, form }) => (
           <form onSubmit={handleSubmit} className={classes.accountForm}>
             {!this.state.formToggle && (
               <FormControl fullWidth className={classes.formControl}>
@@ -51,15 +51,18 @@ class AccountForm extends Component {
                 <Field
                   name="fullname"
                   render={({ input, meta }) => (
-                    <Input
-                      id="fullname"
-                      type="text"
-                      inputProps={{
-                        autoComplete: "off",
-                        ...input
-                      }}
-                      value={input.value}
-                    />
+                    <div>
+                      <Input
+                        id="fullname"
+                        type="text"
+                        inputProps={{
+                          autoComplete: "off",
+                          ...input
+                        }}
+                        value={input.value}
+                      />
+                      {meta.error && meta.touched && <span>{meta.error}</span>}
+                    </div>
                   )}
                 />
               </FormControl>
@@ -69,15 +72,18 @@ class AccountForm extends Component {
               <Field
                 name="email"
                 render={({ input, meta }) => (
-                  <Input
-                    id="email"
-                    type="text"
-                    inputProps={{
-                      autoComplete: "off",
-                      ...input
-                    }}
-                    value={input.value}
-                  />
+                  <div>
+                    <Input
+                      id="email"
+                      type="text"
+                      inputProps={{
+                        autoComplete: "off",
+                        ...input
+                      }}
+                      value={input.value}
+                    />
+                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                  </div>
                 )}
               />
             </FormControl>
@@ -86,15 +92,18 @@ class AccountForm extends Component {
               <Field
                 name="password"
                 render={({ input, meta }) => (
-                  <Input
-                    id="password"
-                    type="password"
-                    inputProps={{
-                      autoComplete: "off",
-                      ...input
-                    }}
-                    value={input.value}
-                  />
+                  <div>
+                    <Input
+                      id="password"
+                      type="password"
+                      inputProps={{
+                        autoComplete: "off",
+                        ...input
+                      }}
+                      value={input.value}
+                    />
+                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                  </div>
                 )}
               />
             </FormControl>
@@ -112,7 +121,8 @@ class AccountForm extends Component {
                   size="large"
                   color="secondary"
                   disabled={
-                    false // @TODO: This prop should depend on pristine or valid state of form
+                    pristine || invalid
+                    //false // @TODO: This prop should depend on pristine or valid state of form
                   }
                 >
                   {this.state.formToggle ? "Enter" : "Create Account"}
@@ -123,11 +133,13 @@ class AccountForm extends Component {
                     type="button"
                     onClick={() => {
                       // @TODO: Reset the form on submit
+                      form.reset();
                       this.setState({
                         fullname: "",
                         email: "",
                         password: "",
-                        formToggle: !this.state.formToggle
+                        formToggle: !this.state.formToggle,
+                        error: null
                       });
                     }}
                   >
@@ -140,6 +152,7 @@ class AccountForm extends Component {
             </FormControl>
             <Typography className={classes.errorMessage}>
               {/* @TODO: Display sign-up and login errors */}
+              {this.state.error && this.state.formToggle}
             </Typography>
           </form>
         )}
