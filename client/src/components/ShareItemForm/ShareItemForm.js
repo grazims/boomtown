@@ -23,11 +23,23 @@ import ItemPreviewContext from "../../context/ItemPreviewProvider";
 
 import { Mutation, renderToStringWithData } from "react-apollo";
 import { ADD_ITEM_MUTATION } from "../../apollo/queries";
+import { Redirect } from "react-router";
+//import { graphql, compose } from "react-apollo";
 
 class ShareItemForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
   render() {
     const { classes, tags } = this.props;
+    //const addItemMutation = this.props.addItemMutation;
 
+    if (this.state.redirect) {
+      return <Redirect to="/items" />;
+    }
     return (
       <ItemPreviewContext.Consumer>
         {({ updatePreview, resetPreview }) => {
@@ -36,7 +48,7 @@ class ShareItemForm extends Component {
               {(addItem, { data }) => {
                 return (
                   <Form
-                    onSubmit={values => {
+                    onSubmit={async values => {
                       let itemTags = tags.filter(tag => {
                         return values.tags.indexOf(tag.title) !== -1;
                       });
@@ -45,11 +57,19 @@ class ShareItemForm extends Component {
                           item: {
                             title: values.itemName,
                             description: values.itemDesc,
+                            //imageurl: values.itemImg,
                             tags: itemTags
                           }
                         }
                       };
-                      addItem(data);
+                      await addItem(data);
+                      resetPreview();
+                      //addItemMutation(data).then(() => {
+                      //resetPreview();
+                      this.setState({
+                        redirect: true
+                      });
+                      //});
                     }}
                     validate={updatePreview}
                   >
@@ -223,3 +243,6 @@ class ShareItemForm extends Component {
 }
 
 export default withStyles(styles)(ShareItemForm);
+
+//criar um state pra por o alerta em bollean
+//ou redirecionar para a pagina inicial
