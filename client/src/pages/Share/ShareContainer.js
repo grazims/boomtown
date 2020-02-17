@@ -7,23 +7,21 @@ import { ALL_TAGS_QUERY } from "../../apollo/queries";
 
 class ShareContainer extends Component {
   render() {
-    return <Share />;
+    return (
+      <Query query={ALL_TAGS_QUERY}>
+        {({ data, loading }) => {
+          if (loading) return null;
+          let tags = data.tags.map(tag => {
+            return {
+              title: tag.title,
+              id: tag.id
+            };
+          });
+          return <Share tags={tags} />;
+        }}
+      </Query>
+    );
   }
 }
 
 export default ShareContainer;
-
-// class ShareContainer extends Component {
-//   render() {
-//     return (
-//       <Query query={ALL_TAGS_QUERY}>
-//         {({ data }) => {
-//           //console.log("tags", data);
-//           return <Share classes={this.props.classes} tags={data.tags} />;
-//         }}
-//       </Query>
-//     );
-//   }
-// }
-
-// export default ShareContainer;

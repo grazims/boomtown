@@ -65,13 +65,6 @@ export const ADD_ITEM_MUTATION = gql`
   mutation addItem($item: NewItemInput!) {
     addItem(item: $item) {
       id
-      title
-      description
-      tags {
-        id
-        title
-      }
-      imageUrl
     }
   }
 `;

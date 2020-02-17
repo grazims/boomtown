@@ -9,6 +9,8 @@ import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 //import ProfileCard from "../../components/ProfileContents/ProfileCard";
 import Card from "../../components/ItemCard/ItemCard";
 
+import ItemGrid from "../../components/ItemGrid";
+
 const Profile = ({ classes, item, viewer }) => {
   // class Profile extends Component {
   //   render() {
@@ -27,6 +29,12 @@ const Profile = ({ classes, item, viewer }) => {
               console.log(data);
               if (loading || !data) return null;
               const { user } = data;
+              let items = user.items.map(item => {
+                item.tags = item.tags.map(tag => {
+                  return tag.title;
+                });
+                return item;
+              });
               return (
                 <>
                   <div
@@ -71,7 +79,7 @@ const Profile = ({ classes, item, viewer }) => {
                     }}
                   >
                     <h2>Shared Items</h2>
-                    <Card />
+                    <ItemGrid items={items} />
                   </div>
                 </>
               );

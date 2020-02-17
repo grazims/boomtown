@@ -37,6 +37,10 @@ const styles = theme => ({
   },
   menu: {
     width: 200
+  },
+  tags: {
+    display: "flex",
+    flexDirection: "column"
   }
 });
 

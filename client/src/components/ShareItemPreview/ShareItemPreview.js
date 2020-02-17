@@ -15,12 +15,12 @@ class ShareItemPreview extends Component {
             title: state.item.itemName,
             description: state.item.itemDesc,
             tags: state.item.tags,
-            itemImg: state.item.media,
+            itemImg: state.item.itemImg,
             itemowner: state.item.itemowner
           };
           return (
             <div>
-              <ItemCard item={state.item} />
+              <ItemCard item={item} />
             </div>
           );
         }}

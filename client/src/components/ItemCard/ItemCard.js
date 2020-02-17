@@ -19,7 +19,11 @@ const ItemCard = ({ classes, item }) => {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="https://wallup.net/wp-content/uploads/2015/12/119794-landscape-stars-748x421.jpg"
+            image={
+              item && item.itemImg
+                ? item.itemImg
+                : "https://wallup.net/wp-content/uploads/2015/12/119794-landscape-stars-748x421.jpg"
+            }
           />
           {/* <CardContent>{item.title}</CardContent> */}
         </CardActionArea>
@@ -38,15 +42,7 @@ const ItemCard = ({ classes, item }) => {
         </div>
         <div className={classes.texto}>
           <h2>{item && item.title ? item.title : "No title"}</h2>
-          <p>
-            {item && item.tags
-              ? item.tags
-                  .map(tag => {
-                    return tag.title;
-                  })
-                  .join(", ")
-              : "No tags"}
-          </p>
+          <p>{item && item.tags ? item.tags.join(", ") : "No tags"}</p>
           <h3>
             {item && item.description ? item.description : "No description"}
           </h3>
