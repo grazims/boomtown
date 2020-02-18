@@ -19,7 +19,10 @@ const styles = theme => ({
   },
 
   container1: {
-    margin: 5
+    margin: 5,
+    width: 400,
+    display: "flex",
+    flexDirection: "column"
   },
   textField: {
     marginLeft: theme.spacing(1),
