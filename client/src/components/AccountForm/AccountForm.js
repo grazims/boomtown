@@ -94,11 +94,11 @@ class AccountForm extends Component {
               <InputLabel htmlFor="password">Password</InputLabel>
               <Field
                 name="password"
+                type="password"
                 render={({ input, meta }) => (
                   <div>
                     <Input
                       id="password"
-                      type="password"
                       inputProps={{
                         autoComplete: "off",
                         ...input
