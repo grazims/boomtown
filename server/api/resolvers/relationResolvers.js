@@ -4,6 +4,8 @@ const relationResolvers = {
   User: {
     async items({ id }, args, { pgResource }, info) {
       const userItems = await pgResource.getItemsForUser(id);
+      console.log("getting user items");
+      console.log(userItems);
       return userItems;
     },
     async borrowed({ id }, args, { pgResource }, info) {

@@ -10,11 +10,12 @@ class ItemGrid extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.grandecontainer}>
-        <Grid container spacing={5}>
+      <div className={classes.root}>
+        <Grid container spacing={5} className={classes.gridContainer}>
           {items.map((item, i) => {
             return (
               <Grow
+                className={classes.grid}
                 in={!!item}
                 key={item.id}
                 style={{ transitionDelay: `${i * 0.03}s` }}

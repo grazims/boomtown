@@ -8,8 +8,10 @@ const Items = ({ classes, items }) => {
     item.tags = item.tags.map(tag => {
       return tag.title;
     });
+    item.itemImg = item.imageurl;
     return item;
   });
+
   return (
     <div>
       <ItemGrid items={items} />

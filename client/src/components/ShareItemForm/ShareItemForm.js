@@ -1,7 +1,6 @@
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-//import ItemGrid from "../../components/ItemGrid";
-import { makeStyles } from "@material-ui/core/styles";
+
 import Button from "@material-ui/core/Button";
 import React, { Component } from "react";
 import FormControl from "@material-ui/core/FormControl";
@@ -21,10 +20,9 @@ import Typography from "@material-ui/core/Typography";
 
 import ItemPreviewContext from "../../context/ItemPreviewProvider";
 
-import { Mutation, renderToStringWithData } from "react-apollo";
+import { Mutation } from "react-apollo";
 import { ADD_ITEM_MUTATION } from "../../apollo/queries";
 import { Redirect } from "react-router";
-//import { graphql, compose } from "react-apollo";
 
 class ShareItemForm extends Component {
   constructor(props) {
@@ -35,7 +33,6 @@ class ShareItemForm extends Component {
   }
   render() {
     const { classes, tags } = this.props;
-    //const addItemMutation = this.props.addItemMutation;
 
     if (this.state.redirect) {
       return <Redirect to="/items" />;
@@ -57,19 +54,17 @@ class ShareItemForm extends Component {
                           item: {
                             title: values.itemName,
                             description: values.itemDesc,
-                            //imageurl: values.itemImg,
+                            imageurl: values.itemImg,
                             tags: itemTags
                           }
                         }
                       };
                       await addItem(data);
                       resetPreview();
-                      //addItemMutation(data).then(() => {
-                      //resetPreview();
+
                       this.setState({
                         redirect: true
                       });
-                      //});
                     }}
                     validate={updatePreview}
                   >
@@ -78,7 +73,9 @@ class ShareItemForm extends Component {
                         <div className={classes.grandecontainer}>
                           <div className={classes.container1}>
                             <form className={classes.container1}>
-                              <h1>Share. Borrow. Prosper.</h1>
+                              <h1 style={{ marginTop: 0 }}>
+                                Share. Borrow. Prosper.
+                              </h1>
 
                               <FormControl className={classes.formControl}>
                                 <Field name="itemImg">
@@ -111,6 +108,7 @@ class ShareItemForm extends Component {
                                     <Input
                                       id="itemName"
                                       type="text"
+                                      fullWidth
                                       inputProps={{
                                         autoComplete: "off",
                                         ...input

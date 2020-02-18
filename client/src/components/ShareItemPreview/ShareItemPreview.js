@@ -9,8 +9,6 @@ class ShareItemPreview extends Component {
     return (
       <ItemPreviewContext.Consumer>
         {({ state }) => {
-          console.log("context props");
-          console.log(state);
           const item = {
             title: state.item.itemName,
             description: state.item.itemDesc,

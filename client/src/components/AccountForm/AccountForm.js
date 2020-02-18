@@ -20,7 +20,8 @@ class AccountForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formToggle: true
+      formToggle: true,
+      error: null
     };
   }
 
@@ -40,7 +41,13 @@ class AccountForm extends Component {
             }
           };
 
-          this.state.formToggle ? login(loginInput) : signup(loginInput);
+          this.state.formToggle
+            ? login(loginInput).catch(error =>
+                this.setState({ error: error.graphQLErrors[0].message })
+              )
+            : signup(loginInput).catch(error =>
+                this.setState({ error: error.graphQLErrors[0].message })
+              );
         }}
         validate={validate}
         render={({ handleSubmit, pristine, invalid, form }) => (
@@ -151,8 +158,7 @@ class AccountForm extends Component {
               </Grid>
             </FormControl>
             <Typography className={classes.errorMessage}>
-              {/* @TODO: Display sign-up and login errors */}
-              {this.state.error && this.state.formToggle}
+              {this.state.error}
             </Typography>
           </form>
         )}

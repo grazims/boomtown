@@ -1,4 +1,4 @@
-import { flexbox } from "@material-ui/system";
+//import { flexbox } from "@material-ui/system";
 
 const styles = theme => ({
   root: {
@@ -19,14 +19,15 @@ const styles = theme => ({
     height: 60
   },
   card: {
-    maxWidth: 345,
+    //maxWidth: 345,
     margin: 20,
-    width: 330,
+    width: 400,
+    height: 510,
     marginRight: 90
   },
   media: {
     height: 190,
-    width: 340
+    width: "auto"
   },
   avatarName: {
     margin: 10

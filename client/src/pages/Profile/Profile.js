@@ -1,4 +1,4 @@
-import React, { useContext, Component } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import ViewerContext from "../../context/ViewerProvider";
@@ -7,7 +7,6 @@ import { Avatar } from "@material-ui/core";
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 //import ProfileCard from "../../components/ProfileContents/ProfileCard";
-import Card from "../../components/ItemCard/ItemCard";
 
 import ItemGrid from "../../components/ItemGrid";
 
@@ -26,15 +25,16 @@ const Profile = ({ classes, item, viewer }) => {
             fetchPolicy="network-only"
           >
             {({ loading, data }) => {
-              console.log(data);
               if (loading || !data) return null;
               const { user } = data;
               let items = user.items.map(item => {
                 item.tags = item.tags.map(tag => {
                   return tag.title;
                 });
+                item.itemImg = item.imageurl;
                 return item;
               });
+
               return (
                 <>
                   <div
@@ -44,8 +44,8 @@ const Profile = ({ classes, item, viewer }) => {
                       justifyContent: "center"
                     }}
                   >
-                    {/* <div className={classes.container}> */}
-                    <div
+                    <div className={classes.container}>
+                      {/* <div
                       style={{
                         display: "grid",
                         //flexDirection: "row",
@@ -53,7 +53,7 @@ const Profile = ({ classes, item, viewer }) => {
                         width: 400,
                         backgroundColor: "red"
                       }}
-                    >
+                    > */}
                       <div
                         style={{
                           display: "flex",
@@ -67,7 +67,7 @@ const Profile = ({ classes, item, viewer }) => {
                         />
                         <h3>{user.fullname}</h3>
                       </div>
-                      <p>1 Item shared 0 Items borrowed</p>
+                      <p>{`${items.length} item(s) shared 0 Items borrowed`}</p>
                       <p>{user.bio || "No Bio Provided"}</p>
                     </div>
                   </div>
@@ -92,34 +92,3 @@ const Profile = ({ classes, item, viewer }) => {
 };
 
 export default withStyles(styles)(Profile);
-
-//export default ProfileContainer;
-// export const ALL_USER_ITEMS_QUERY = gql`
-//   query user($id: ID!) {
-//     user(id: $id) {
-//       bio
-//       email
-//       fullname
-//       items {
-//         ...ItemFields
-//       }
-//       borrowed {
-//         ...ItemFields
-//       }
-//     }
-//   }
-//   ${ItemFields}
-// `;
-
-// const Profile = ({ classes }) => {
-//   const { viewer, loading } = useContext(ViewerContext);
-//   if (loading) return <p>loading...</p>;
-
-//   return (
-//     <div>
-//       <p>
-//         This is the profile page located at <code>/profile/:userId</code>.
-//       </p>
-//     </div>
-//   );
-// };

@@ -1,4 +1,4 @@
-import React, { Component, createContext, Children } from "react";
+import React, { Component } from "react";
 
 const ItemPreviewContext = React.createContext();
 

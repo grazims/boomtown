@@ -2,17 +2,16 @@ import {
   Card,
   CardActions,
   CardActionArea,
-  CardContent,
   CardMedia,
   Button,
   Avatar
 } from "@material-ui/core";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import React, { Component } from "react";
+import React from "react";
 
 const ItemCard = ({ classes, item }) => {
-  console.log("item", item);
+  //console.log("item", item);
   return (
     <Card className={classes.card}>
       <div className={classes.grandecontainer}>
@@ -25,7 +24,6 @@ const ItemCard = ({ classes, item }) => {
                 : "https://wallup.net/wp-content/uploads/2015/12/119794-landscape-stars-748x421.jpg"
             }
           />
-          {/* <CardContent>{item.title}</CardContent> */}
         </CardActionArea>
         <div className={classes.root}>
           <Avatar
@@ -58,6 +56,3 @@ const ItemCard = ({ classes, item }) => {
 };
 
 export default withStyles(styles)(ItemCard);
-
-//mudar => itemCard = lado esquerdo, para ser usado em diversas paginas
-// imagem, profile name, data, name your item, desc your item, botao 'borrow'
