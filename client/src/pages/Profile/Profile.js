@@ -3,7 +3,6 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import ViewerContext from "../../context/ViewerProvider";
 import { Avatar } from "@material-ui/core";
-// import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 import ItemGrid from "../../components/ItemGrid";
@@ -33,48 +32,25 @@ const Profile = ({ classes, item, viewer }) => {
 
               return (
                 <>
-                  <div
-                    style={{
-                      backgroundColor: "pink",
-                      display: "flex",
-                      justifyContent: "center"
-                    }}
-                  >
+                  <div className={classes.profileContainer}>
                     <div className={classes.container}>
-                      {/* <div
-                      style={{
-                        display: "grid",
-                        //flexDirection: "row",
-                        justifyContent: "center",
-                        width: 400,
-                        backgroundColor: "red"
-                      }}
-                    > */}
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row"
-                          //justifyContent: "center"
-                        }}
-                      >
+                      <div className={classes.bio}>
                         <Avatar
                           alt="Remy Sharp"
                           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA1_cB_z2jVf-eK2Yo6ePIJMwt5DWNnazeauE9BKh9C4P8cVMs&s"
                         />
-                        <h3>{user.fullname}</h3>
+                        <p className={classes.userName}>{user.fullname}</p>
                       </div>
-                      <p>{`${items.length} item(s) shared 0 Items borrowed`}</p>
-                      <p>{user.bio || "No Bio Provided"}</p>
+                      <p
+                        style={{ fontSize: 18 }}
+                      >{`${items.length} item(s) shared 0 Items borrowed`}</p>
+                      <p style={{ fontSize: 18 }}>
+                        {user.bio || "No Bio Provided"}
+                      </p>
                     </div>
                   </div>
-                  <div
-                    style={{
-                      backgroundColor: "purple",
-                      display: "flex",
-                      flexDirection: "column"
-                    }}
-                  >
-                    <h2>Shared Items</h2>
+                  <div className={classes.itemTitleContainer}>
+                    <h2 className={classes.itemTitle}>Shared Items</h2>
                     <ItemGrid items={items} />
                   </div>
                 </>

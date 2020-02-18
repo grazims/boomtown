@@ -5,7 +5,8 @@ const styles = theme => ({
     paddingRight: "70px",
     paddingTop: "30px",
     paddingBottom: "30px",
-    height: "100%"
+    height: "100%",
+    backgroundColor: "#212121"
   },
   gridContainer: {
     display: "flex"
