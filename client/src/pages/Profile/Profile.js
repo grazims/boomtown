@@ -11,8 +11,6 @@ import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 import ItemGrid from "../../components/ItemGrid";
 
 const Profile = ({ classes, item, viewer }) => {
-  // class Profile extends Component {
-  //   render() {
   return (
     <ViewerContext.Consumer>
       {({ viewer, item, classes }) => {
