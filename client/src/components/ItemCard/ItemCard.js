@@ -11,7 +11,6 @@ import { withStyles } from "@material-ui/core/styles";
 import React from "react";
 
 const ItemCard = ({ classes, item }) => {
-  //console.log("item", item);
   return (
     <Card className={classes.card}>
       <div className={classes.grandecontainer}>
@@ -39,14 +38,18 @@ const ItemCard = ({ classes, item }) => {
           </div>
         </div>
         <div className={classes.texto}>
-          <h2>{item && item.title ? item.title : "No title"}</h2>
-          <p>{item && item.tags ? item.tags.join(", ") : "No tags"}</p>
-          <h3>
+          <p className={classes.cardName}>
+            {item && item.title ? item.title : "No title"}
+          </p>
+          <p className={classes.tagName}>
+            {item && item.tags ? item.tags.join(", ") : "No tags"}
+          </p>
+          <p className={classes.descName}>
             {item && item.description ? item.description : "No description"}
-          </h3>
+          </p>
         </div>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" className={classes.borrowBotton}>
             Borrow
           </Button>
         </CardActions>
