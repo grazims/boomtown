@@ -1,14 +1,10 @@
 const styles = theme => ({
-  root: {
-    // height: 100,
-    // display: "flex",
-    // padding: 16,
-    // flexGrow: 1,
-    //background: "blue"
-    // alignItems: "center",
-    // paddingTop: 0,
-    // flexDirection: "column",
-    // justifyContent: "center"
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    paddingTop: 50,
+    flexWrap: "wrap",
+    boxSizing: "borderBox"
   }
 });
 

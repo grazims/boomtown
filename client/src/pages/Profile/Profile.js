@@ -7,10 +7,10 @@ import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 import ItemGrid from "../../components/ItemGrid";
 
-const Profile = ({ classes, item, viewer }) => {
+const Profile = ({ classes }) => {
   return (
     <ViewerContext.Consumer>
-      {({ viewer, item }) => {
+      {({ viewer }) => {
         return (
           <Query
             query={ALL_USER_ITEMS_QUERY}

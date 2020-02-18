@@ -1,5 +1,3 @@
-//import { makeStyles } from "@material-ui/core/styles";
-
 const styles = theme => ({
   root: {
     "& > *": {
@@ -14,8 +12,6 @@ const styles = theme => ({
     display: "none"
   },
   grandecontainer: {
-    //display: "flex",
-    // flexDirection: "column",
     marginLeft: 90,
     maxWidth: 345,
     margin: 20,
@@ -23,8 +19,6 @@ const styles = theme => ({
   },
 
   container1: {
-    //display: "flex",
-    // flexDirection: "row-reverse",
     margin: 5
   },
   textField: {

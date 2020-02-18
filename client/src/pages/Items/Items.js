@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import ItemGrid from "../../components/ItemGrid";
 
-const Items = ({ classes, items }) => {
+const Items = ({ items }) => {
   items = items.map(item => {
     item.tags = item.tags.map(tag => {
       return tag.title;

@@ -1,6 +1,5 @@
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
-
 import Button from "@material-ui/core/Button";
 import React, { Component } from "react";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,7 +7,6 @@ import TextField from "@material-ui/core/TextField";
 import { Form, Field } from "react-final-form";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-
 import HomeIcon from "@material-ui/icons/HomeOutlined";
 import ToolIcon from "@material-ui/icons/BuildOutlined";
 import ElectronicsIcon from "@material-ui/icons/DevicesOutlined";
@@ -17,9 +15,7 @@ import MusicIcon from "@material-ui/icons/MusicNoteOutlined";
 import BooksIcon from "@material-ui/icons/BookOutlined";
 import HappinessIcon from "@material-ui/icons/TagFacesOutlined";
 import Typography from "@material-ui/core/Typography";
-
 import ItemPreviewContext from "../../context/ItemPreviewProvider";
-
 import { Mutation } from "react-apollo";
 import { ADD_ITEM_MUTATION } from "../../apollo/queries";
 import { Redirect } from "react-router";

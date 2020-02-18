@@ -1,5 +1,3 @@
-import { textAlign } from "@material-ui/system";
-
 const styles = theme => ({
   profileContainer: {
     backgroundColor: "#212121",

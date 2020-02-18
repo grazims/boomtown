@@ -4,17 +4,9 @@ import styles from "./styles";
 import ShareItemForm from "../../components/ShareItemForm";
 import ShareItemPreview from "../../components/ShareItemPreview";
 
-const Share = ({ tags }) => {
+const Share = ({ tags, classes }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        paddingTop: 50,
-        flexWrap: "wrap",
-        boxSizing: "borderBox"
-      }}
-    >
+    <div className={classes.container}>
       <ShareItemPreview />
       <ShareItemForm tags={tags} />
     </div>
