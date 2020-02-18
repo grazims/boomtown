@@ -6,14 +6,12 @@ import { Avatar } from "@material-ui/core";
 // import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
-//import ProfileCard from "../../components/ProfileContents/ProfileCard";
-
 import ItemGrid from "../../components/ItemGrid";
 
 const Profile = ({ classes, item, viewer }) => {
   return (
     <ViewerContext.Consumer>
-      {({ viewer, item, classes }) => {
+      {({ viewer, item }) => {
         return (
           <Query
             query={ALL_USER_ITEMS_QUERY}

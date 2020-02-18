@@ -31,7 +31,6 @@ class AccountForm extends Component {
     return (
       <Form
         onSubmit={values => {
-          // console.log(values);
           const loginInput = {
             variables: {
               user: values
